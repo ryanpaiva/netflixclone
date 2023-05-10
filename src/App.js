@@ -1,7 +1,13 @@
 import React from "react";
+import './App.css'
+import { Home } from "./pages/home";
 
-export default () =>{
+
+const App = () => {
+
   return (
-    <div>olá mundo</div>
+    <div><Home /></div>
   )
 }
+
+export default App;
