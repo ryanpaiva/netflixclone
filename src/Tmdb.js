@@ -2,17 +2,6 @@ const API_KEY = 'c32dccdb618b05a9e7d5547e764f7047'
 const API_URL = 'https://api.themoviedb.org/3'
 const lang = 'language=pt-BR'
 
-/*
-- originais netflix
-- recomendados (trending)
-- em alta (top rated)
-- ação
-- comédia
-- terror
-- romance
-- documentários 
-*/
-
 const basicFetch = async (endpoint) => {
     const req = await fetch(`${API_URL}${endpoint}`);
     const json = await req.json();
@@ -62,6 +51,25 @@ const Tmdb = {
             items: await basicFetch(`/discover/movie?with_genres=99&${lang}&api_key=${API_KEY}`)
         },
         ]
+    },
+    getMovieInfo: async (movieID, type) => {
+        let info = {};
+
+        if (movieID) {
+            switch (type) {
+                case 'movie':
+                    info = await basicFetch(`/movie/${movieID}?${lang}&api_key=${API_KEY}`);
+                    break;
+                case 'tv':
+                    info = await basicFetch(`/tv/${movieID}?${lang}&api_key=${API_KEY}`);
+                    break;
+                default:
+                    info = null;
+                    break;
+            }
+        }
+
+        return info;
     }
 }
 
