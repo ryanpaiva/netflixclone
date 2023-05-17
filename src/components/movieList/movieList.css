@@ -11,8 +11,8 @@
     padding-left: 30px;
 }
 
-.movieList .list{
-    width: 99999px;
+.movieList .list {
+    transition: 0.3s ease;
 }
 
 .movieList .item{
@@ -29,4 +29,40 @@
 
 .movieList .item img:hover{
     transform: scale(1);
+}
+
+.arrow{
+    position: absolute;
+    width: 40px;
+    height: 290px;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.3s ease;
+} 
+
+.arrow.left{
+    left: 0;
+}
+
+.arrow.right {
+    right: 0;
+}
+
+.movieList:hover .arrow.left,
+.movieList:hover .arrow.right {
+    opacity: 1;
+}
+
+@media (max-width: 760px) {
+    
+
+    .arrow {
+        opacity: 1;
+    }
 }

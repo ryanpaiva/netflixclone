@@ -3,6 +3,7 @@ import { Tmdb } from '../Tmdb'
 import { MovieList } from "../components/movieList/movieList";
 import { Featured } from "../components/FeaturedMovies/FeaturedMovie";
 import { Header } from "../components/header/header";
+import { Loading } from "../components/loading/loading";
 
 const Home = () => {
 
@@ -60,6 +61,10 @@ const Home = () => {
                     Direitos de imagem para Netflix<br />
                     Dados utilizados do site themoviedb.org
                 </footer>
+
+            {movieList.length <=0 &&
+                <Loading />
+            }
             </div>
     )
 }
